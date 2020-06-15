@@ -1,36 +1,30 @@
 const React = require('react');
 const reverseInt = require('../reverse_interger.js')
-// const maxChar = require('../max_character.js')
-
-const maxChar = (string) => {
-    const frequency = {}
-    for(let i = 0; i < string.length; i++) {
-        let char = string.charAt(i);
-        if (frequency[char]) {
-            frequency[char]++;
-        } else {
-            frequency[char] = 1;
-        }
-    }
-    return frequency;
-}
+const maxChar = require('../max_character.js')
 
 class Home extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            reverse: '',
+            maxCharacter: ''
+        };
+    }
   render() {
     return (
         <div>
             <h1>Algorithms</h1>
             <label htmlFor="reverse">Reverse Your Interger</label>
-            <form action="javascript:;" onSubmit="reverseInt(this)">
+            <form action="" onSubmit="reverseInt(this)">
                 Input Interger:
-                <input type="text" name="num" /><br/>
+                <input type="text" onChange={this.handleChange}/><br/>
                 <input type="submit" name="" value="REVERSE"/>
              </form>
              <br />
              <label htmlFor="maxCharacter">Find the Max Character</label>
-            <form action="javascript:;" onSubmit="maxChar(this)">
+            <form action="" onSubmit="maxChar(this)">
                 Input Character as String:
-               <input type="text" name="num" /><br/>
+               <input type="text" name="num" onChange={this.handleChange}/><br/>
                 <input type="submit" name="" value="FIND"/>
              </form>
         </div>);
